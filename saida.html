@@ -11,21 +11,16 @@
 				location.href = "entrada.html";
 			}	
 			
-			function carregaResposta(){
-				var oUrl = new URL(location.href);
-				var sValorOrigem = oUrl.searchParams.get("valor_origem");
-				//console.log(sValorOrigem);
-				return sValorOrigem;
-				
-			}
-			
 			function callback(){
 				var oResponse = this;
 				var sResponseBody = oResponse.responseText;
 				var oJSON = JSON.parse(sResponseBody);
 				var sReais = oJSON.rates.BRL;
-				console.log(sReais);
-				document.querySelector("#valor_destino").value = sReais * ;
+				
+				var oUrl = new URL(location.href);
+				var sValorOrigem = oUrl.searchParams.get("valor_origem");
+				
+				document.querySelector("#valor_destino").value = sReais * sValorOrigem;
 			}
 			
 			function chamaAPI(){
